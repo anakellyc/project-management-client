@@ -11,11 +11,17 @@ class ProjectList extends Component {
   }
 
   getAllProjects = () => {
-    axios.get(`http://localhost:5000/api/projects`).then(responseFromApi => {
-      this.setState({
-        listOfProjects: responseFromApi.data
+    axios
+      .get(`http://localhost:5000/api/projects`, { withCredentials: true })
+      .then(responseFromApi => {
+        //debugger;
+        this.setState({
+          listOfProjects: responseFromApi.data
+        });
+      })
+      .catch(error => {
+        //debugger;
       });
-    });
   };
 
   componentDidMount() {
